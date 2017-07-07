@@ -72,7 +72,8 @@ class BaseKite extends Emitter {
     // if we have a connection already dismiss the `autoConnect` and
     // `autoReconnect` options.
     if (connection) {
-      if (connection.readyState === connection.CLOSED) {
+      this.emit(Event.debug, 'Got connection option:', connection)
+      if (connection.getState() === connection.CLOSED) {
         throw new Error(
           'Given connection is closed, try with a live connection or pass a url option to let Kite create the connection'
         )
@@ -82,7 +83,7 @@ class BaseKite extends Emitter {
       this.ws = connection
 
       // if the connection is already open trigger `onOpen`.
-      if (connection.readyState === connection.OPEN) {
+      if (connection.getState() === connection.OPEN) {
         this.onOpen()
       }
     } else {

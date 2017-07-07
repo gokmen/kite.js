@@ -1,4 +1,5 @@
 import Emitter from '../../kite/emitter'
+import { State } from '../../constants'
 
 export default class Session extends Emitter {
   constructor(connection) {
@@ -17,6 +18,10 @@ export default class Session extends Emitter {
 
   getId() {
     return `${this.connection.remoteAddress}:${this.connection.remotePort}`
+  }
+
+  getState() {
+    return this.connection.readyState
   }
 
   send(message) {

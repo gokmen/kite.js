@@ -33,7 +33,13 @@ export const AuthType = asObjectOf(KnownAuthTypes)
 export const TimerHandles = ['heartbeatHandle', 'expiryHandle', 'backoffHandle']
 export const WhiteList = ['kite.heartbeat', 'kite.ping']
 
-export const State = { NOTREADY: 0, READY: 1, CLOSED: 3, CONNECTING: 5 }
+export const State = {
+  NOTREADY: 0,
+  READY: 1,
+  CLOSED: 3,
+  CLOSING: 4,
+  CONNECTING: 5,
+}
 
 export const DebugLevel = {
   CRITICAL: 0,
